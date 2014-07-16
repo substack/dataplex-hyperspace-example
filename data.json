@@ -1,0 +1,26 @@
+[
+  {
+    "type": "put",
+    "key": [ "server", "edbot" ],
+    "value": {
+      "name": "edbot",
+      "address": "10.0.41.9"
+    }
+  },
+  {
+    "type": "put",
+    "key": [ "server", "maxwell" ],
+    "value": {
+      "name": "maxwell",
+      "address": "10.0.40.5"
+    }
+  },
+  {
+    "type": "put",
+    "key": [ "server", "coil" ],
+    "value": {
+      "name": "coil",
+      "address": "10.0.40.4"
+    }
+  }
+]
