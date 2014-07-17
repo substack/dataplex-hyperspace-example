@@ -8,7 +8,15 @@ var db = level('/tmp/test.db', {
     keyEncoding: require('bytewise'),
     valueEncoding: 'json'
 });
-db.batch(require('./data.json'));
+
+//db.batch(require('./data.json'));
+var data = require('./data.json');
+var iv = setInterval(function () {
+    if (data.length === 0) return clearInterval(iv);
+    var d = data.shift();
+console.error(d); 
+    db.put(d.key, d.value, function () {});
+}, 2000);
 
 var dataplex = require('./lib/data.js');
 var router = require('./lib/router.js')(dataplex(db));

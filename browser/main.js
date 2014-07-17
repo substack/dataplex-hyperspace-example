@@ -18,6 +18,7 @@ r.on('element', function (elem) {
     plex.open('/server/' + name + '/cpu').pipe(graph);
     graphs.push(graph);
 });
+plex.open('/servers', { live: true }).pipe(r);
 
 (function frame () {
     graphs.forEach(function (g) { g.animate() });
