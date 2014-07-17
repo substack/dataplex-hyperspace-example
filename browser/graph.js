@@ -11,10 +11,11 @@ function Graph (opts) {
     if (!(this instanceof Graph)) return new Graph(opts);
     Writable.call(this);
     
-    this.element = createElement('svg');
+    this.element = createElement('svg', { width: 350, height: 100 });
     this.polyline = createElement('polyline', {
         stroke: 'purple',
-        strokeWidth: 2
+        strokeWidth: 2,
+        fill: 'transparent'
     });
     this.element.appendChild(this.polyline);
     
@@ -43,7 +44,9 @@ Graph.prototype.insert = function (row) {
         if (row.time > p.time) break;
     }
     this.points.splice(i, 0, row);
-    
+};
+
+Graph.prototype.animate = function () {
     this.polyline.setAttribute('points', this.points.map(function (pt) {
         var x = (Date.now() - pt.time) / 100;
         return x + ',' + pt.cpu;
@@ -53,7 +56,13 @@ Graph.prototype.insert = function (row) {
 function createElement (name, opts) {
     var elem = document.createElementNS('http://www.w3.org/2000/svg', name);
     Object.keys(opts || {}).forEach(function (key) {
-        elem.setAttribute(key, opts[key]);
+        elem.setAttribute(attrify(key), opts[key]);
     });
     return elem;
+    
+    function attrify (key) {
+        return key.replace(/([a-z])([A-Z])/g, function (_, a, b) {
+            return a + '-' + b.toLowerCase();
+        });
+    }
 }
