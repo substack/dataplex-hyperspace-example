@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "build": "browserify browser/main.js -t brfs -o static/bundle.js",
+    "watch": "watchify browser/main.js -t brfs -o static/bundle.js -dv"
+  }
+}
