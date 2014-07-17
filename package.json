@@ -1,4 +1,5 @@
 {
+  "name": "dataplex-rendering-example",
   "scripts": {
     "start": "node server.js",
     "build": "browserify browser/main.js -o static/bundle.js",
@@ -6,5 +7,30 @@
   },
   "browserify": {
     "transform": [ "brfs", "bulkify" ]
+  },
+  "dependencies": {
+    "brfs": "^1.1.2",
+    "bulk-require": "~0.2.1",
+    "bulkify": "^1.0.2",
+    "bytewise": "~0.7.1",
+    "dataplex": "^1.0.0",
+    "domify": "^1.3.0",
+    "duplexer2": "~0.0.2",
+    "ecstatic": "~0.5.4",
+    "hyperspace": "^1.1.1",
+    "hyperstream": "~0.5.0",
+    "inherits": "^2.0.1",
+    "level": "~0.18.0",
+    "level-live-stream": "^1.4.9",
+    "readable-stream": "^1.1.13-1",
+    "routes": "^1.1.0",
+    "shoe": "~0.0.15",
+    "split": "~0.3.0",
+    "through2": "^1.0.0",
+    "trumpet": "^1.6.4"
+  }
+  "devDependencies": {
+    "browserify": "^4.2.1",
+    "watchify": "~0.10.2"
   }
 }
