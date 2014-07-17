@@ -29,7 +29,7 @@
     "split": "~0.3.0",
     "through2": "^1.0.0",
     "trumpet": "^1.6.4"
-  }
+  },
   "devDependencies": {
     "browserify": "^4.2.1",
     "watchify": "~0.10.2"
