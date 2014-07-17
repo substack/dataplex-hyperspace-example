@@ -1,6 +1,5 @@
 var through = require('through2');
 var Graph = require('./graph.js');
-var path = require('path');
 
 var sock = require('shoe')('/sock');
 var plex = require('dataplex')();
