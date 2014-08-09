@@ -14,7 +14,6 @@ var data = require('./data.json');
 var iv = setInterval(function () {
     if (data.length === 0) return clearInterval(iv);
     var d = data.shift();
-console.error(d); 
     db.put(d.key, d.value, function () {});
 }, 2000);
 

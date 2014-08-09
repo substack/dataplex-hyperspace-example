@@ -12,7 +12,7 @@ var graphs = [];
 
 var r = render.server().appendTo('#servers');
 r.on('element', function (elem) {
-    var name = elem.querySelector('.name').textContent;
+    var name = elem.querySelector('*[data-name]').textContent;
     var graph = Graph().appendTo(elem.querySelector('.graph'));
     plex.open('/server/' + name + '/cpu').pipe(graph);
     graphs.push(graph);

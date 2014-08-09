@@ -1,0 +1,39 @@
+#sidebar {
+  position: absolute;
+  top: 0px;
+  width: 150px;
+  bottom: 0px;
+  left: 0px;
+}
+
+#pages {
+  position: absolute;
+  left: 150px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.server {
+  background-color: rgb(220,220,220);
+  padding: 20px;
+  margin-bottom: 5px;
+  height: 100px;
+}
+.server .left {
+  display: inline-block;
+  width: 400px;
+  vertical-align: top;
+}
+.server .right {
+  display: inline-block;
+  height: 100px;
+}
+.row .key {
+  width: 120px;
+  display: inline-block;
+  font-weight: bold;
+}
+.row .value {
+  display: inline-block;
+}

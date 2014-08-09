@@ -1,34 +1,20 @@
 <html>
   <head>
-    <style>
-      .server {
-        background-color: rgb(220,220,220);
-        padding: 20px;
-        margin-bottom: 5px;
-        height: 100px;
-      }
-      .server .left {
-        display: inline-block;
-        width: 400px;
-        vertical-align: top;
-      }
-      .server .right {
-        display: inline-block;
-        height: 100px;
-      }
-      .row .key {
-        width: 120px;
-        display: inline-block;
-        font-weight: bold;
-      }
-      .row .value {
-        display: inline-block;
-      }
-    </style>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <h1>servers</h1>
-    <div id="servers"></div>
+    <div id="sidebar">
+      <div class="link-row">
+        <a href="/" x-chooser="sidebar">dashboard</a>
+      </div>
+      <div class="link-row">
+        <a href="/servers" x-chooser="sidebar">servers</a>
+      </div>
+    </div>
+    <div id="pages">
+      <div id="servers" class="page"></div>
+    </div>
+    
     <script src="/bundle.js"></script>
   </body>
 </html>
