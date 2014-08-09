@@ -10,7 +10,7 @@ var render = bulk(__dirname + '/../render', [ '*.js' ]);
 
 var graphs = [];
 
-var r = render.server().appendTo('#servers');
+var r = render.server().appendTo('#pages *[page=servers]');
 r.on('element', function (elem) {
     var name = elem.querySelector('*[data-name]').textContent;
     var graph = Graph().appendTo(elem.querySelector('.graph'));
