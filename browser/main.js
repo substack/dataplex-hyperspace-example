@@ -2,12 +2,17 @@ var sock = require('shoe')('/sock');
 var plex = require('dataplex')();
 sock.pipe(plex).pipe(sock);
 
-var bulk = require('bulk-require');
-var files = bulk(__dirname + '/../elements', [ '*/browser.js' ]);
-var scope = Object.keys(files).reduce(function (acc, key) {
-    acc[key] = files[key].browser;
-    return acc;
-}, {});
+var attractor = require('attractor');
+var scope = {
+    server: require('../render/server/browser.js')
+};
+var attr = attractor({
+    'x-scope': require('attr-scope')
+}, scope);
+
+var render = {
+    server: require('../render/server')
+};
 
 var router = require('routes')();
 
