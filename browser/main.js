@@ -1,25 +1,25 @@
-var through = require('through2');
-var Graph = require('./graph.js');
-
 var sock = require('shoe')('/sock');
 var plex = require('dataplex')();
 sock.pipe(plex).pipe(sock);
 
 var bulk = require('bulk-require');
-var render = bulk(__dirname + '/../render', [ '*.js' ]);
+var files = bulk(__dirname + '/../elements', [ '*/browser.js' ]);
+var scope = Object.keys(files).reduce(function (acc, key) {
+    acc[key] = files[key].browser;
+    return acc;
+}, {});
 
-var graphs = [];
+var router = require('routes')();
 
-var r = render.server().appendTo('#pages *[page=servers]');
-r.on('element', function (elem) {
-    var name = elem.querySelector('*[data-name]').textContent;
-    var graph = Graph().appendTo(elem.querySelector('.graph'));
-    plex.open('/server/' + name + '/cpu').pipe(graph);
-    graphs.push(graph);
+router.addRoute('/', function (params) {
+    var r = pages.server.browser(plex).list(params);
+    r.appendTo('#pages *[page=server-list]');
 });
-plex.open('/servers', { live: true }).pipe(r);
 
-(function frame () {
-    graphs.forEach(function (g) { g.animate() });
-    window.requestAnimationFrame(frame);
-})();
+router.addRoute('/server/:id', function (params) {
+    var r = pages.server.browser(plex).detail(params);
+    r.appendTo('#pages *[page=server-detail]');
+});
+
+var m = router.match(location.pathname + location.search);
+if (m) m.fn(m.params);

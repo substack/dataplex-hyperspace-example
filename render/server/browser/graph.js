@@ -46,7 +46,7 @@ Graph.prototype.insert = function (row) {
     this.points.splice(i, 0, row);
 };
 
-Graph.prototype.animate = function () {
+Graph.prototype.tick = function (dt) {
     this.polyline.setAttribute('points', this.points.map(function (pt) {
         var x = (Date.now() - pt.time) / 100;
         return x + ',' + pt.cpu;
