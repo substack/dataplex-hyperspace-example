@@ -13,7 +13,7 @@ exports.list = function (plex, opts) {
             '*[data-address]': row.value.address
         };
     });
-    return plex.open('/servers').pipe(render);
+    return plex.open('/servers', opts).pipe(render);
 };
 
 exports.detail = function (plex, opts) {

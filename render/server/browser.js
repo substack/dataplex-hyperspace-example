@@ -7,7 +7,7 @@ function Server (plex, elem) {
     
     var name = elem.querySelector('*[data-name]').textContent;
     this.graph = Graph().appendTo(elem.querySelector('.graph'));
-    this.plex.open('/server/' + name + '/cpu').pipe(this.graph);
+    plex.open('/server/' + name + '/cpu').pipe(this.graph);
 }
 
 Server.prototype.tick = function (dt) {
