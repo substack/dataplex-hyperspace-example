@@ -17,13 +17,15 @@ var render = {
 var router = require('routes')();
 
 router.addRoute('/', function (params) {
-    var r = pages.server.browser(plex).list(params);
+    var r = render.server.list(plex, { live: true });
     r.appendTo('#pages *[page=server-list]');
+    attr.scan(document);
 });
 
 router.addRoute('/server/:id', function (params) {
-    var r = pages.server.browser(plex).detail(params);
+    var r = render.server.detail(plex, { live: true });
     r.appendTo('#pages *[page=server-detail]');
+    attr.scan(document);
 });
 
 var m = router.match(location.pathname + location.search);
