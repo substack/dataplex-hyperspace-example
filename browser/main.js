@@ -1,4 +1,3 @@
-var bind = require('function-bind');
 var attractor = require('attractor');
 var loop = require('frame-loop');
 
